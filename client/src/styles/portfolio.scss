@@ -1,0 +1,84 @@
+@import "./reset";
+@import "./variables";
+@import "./utility";
+@import "./components";
+
+//Global
+.body {
+    position: relative;
+}
+
+
+//NavBar
+#navbar {
+  position: fixed;
+  @include size-100-30;
+
+  nav {
+    position: absolute;
+    top: 10%;
+    height: 50%;
+    width: 100%;
+    @include flex-start-end-col;
+
+    .nav-burger {
+      margin-right: 57.5%;
+    }
+
+    .nav-links {
+      width: 100%;
+
+      div {
+        @include nav-links
+      }
+    }
+  }
+}
+
+//Home Page
+#home {
+  @include showcase($grey);
+  @include flex-center-center;
+}
+
+.home-pic-container {
+  @include working-space;
+  @include pic-sizing;
+  background-image: url($home-img);
+}
+
+.max-width {
+  max-width: 1800px;
+}
+
+.hero-container {
+  @include flex-end-start;
+}
+
+.hero-box-top {
+  @include size-square-1;
+  @include relative-right-top;
+  @include padding-1-1;
+  @include flex-center-start;
+  background-color: $grey;
+}
+
+.hero-box-bottom {
+  background-color: $cinereous;
+  @include size-square-1;
+  @include relative-right-top-2;
+  @include flex-center-start;
+}
+
+.hero-text {
+  @include flex-center-start;
+}
+
+.hero-button {
+  @include button($rosewood, $grey);
+  @include trans-bg-col;
+}
+
+.hero-button:hover {
+  @include button($cinereous, $rosewood);
+}

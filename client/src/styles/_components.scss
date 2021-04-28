@@ -1,0 +1,27 @@
+@import "./variables";
+@import "./utility";
+
+
+//Use "Components" for physical elements on page
+
+@mixin showcase($background-color) {
+    background-color: $background-color;
+    
+    @include full-page;
+    @include flex-center-center;
+}
+
+
+@mixin button($background-color, $text-color) {
+    @include padding-1-1;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+
+@mixin nav-links{
+    background-color: $grey-op;
+    @include padding-1-1;
+    @include margin-0;
+}
+

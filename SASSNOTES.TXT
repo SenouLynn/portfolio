@@ -1,0 +1,89 @@
+// $ signs indicate it's a variable
+//Ex: $primary-color: blue
+
+Creating a map of key value pairs: 
+
+$font-weights: (
+    "reg" : 400,
+    "medium" : 500,
+    "bold" : 700
+)
+
+- MAP-GET
+Now you can call upon key value by using map-get
+
+body {
+    color: $primary-color;
+    font-weight: map-get($font-weights, bold);
+}
+
+- Nesting
+You can call upon and style nested components by actually nesting the scss
+ex: 
+<div class="main">
+    <p class="main__paragraph" >Lorem</p>
+</div>
+
+Then the style
+
+main {
+    width: 80%,
+
+    main___paragraph {
+        font-weight: map-get($font-weights, reg)
+    }
+}
+
+- Partials
+file name starts with underscore => this indicates to a compiler not to include them in the compiler
+Also, you "import" external sass files by using @import './variables.scss
+
+
+-Functions
+syntax is @function weight($weight-name) {
+    @return map-get($font-weight, @weight-name)
+}
+
+this allows you to shorten the syntax from 
+font-weight: map-get($font-weights, reg)
+
+to 
+
+font-weight: weight(reg)
+
+^ You're calling the function and the using the key to access vale pair
+
+
+-Mixins 
+Allows you to assign mutliple properties to a single value
+ex: 
+@mixins flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction
+}
+
+now you can use those properties in another property
+You can also pass arguments to mixins
+
+.main {
+    @include flexCenter(row) => this will pass row through the mixin to where it's called at flex-direction
+}
+
+You can ALSO add conditions 
+ex: 
+
+@mixin them($light-theme: true) {
+    @if $light-them{
+        LIGHT THEM STUFF 
+    }
+}
+
+Using mixins for media query
+
+@mixin mobile {
+    @media (max-width: 800px) {
+        @content
+    }
+}

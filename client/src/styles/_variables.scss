@@ -1,0 +1,137 @@
+//Colors
+$raisin-black: #2B282Fff;
+$rosewood: #5E1715ff;
+$bud-green: #87B672ff;
+$dark-moss-green: #505F21ff;
+$cinereous: #927D78ff;
+$grey: #E3DEE5;
+$grey-op: rgba(227, 222, 229, 0.65);
+$white: #FFFFFFff;
+
+//Sizing
+$working-space-width: 1600px;
+
+@mixin full-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin working-space {
+    width: 85vw;
+    height: 85vw;
+}
+
+@mixin size-100-100 {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin size-100-30 {
+    height: 100%;
+    width: 30%;
+}
+@mixin size-25-25 {
+    height: 25vw;
+    width: 25vw;
+}
+
+@mixin size-square-1 {
+    height: 350px;
+    width: 350px;
+}
+
+
+//Padding
+@mixin padding-1-1{
+    padding: 1rem 1rem;
+}
+
+@mixin padding-2-2{
+    padding: 2rem 2rem;
+}
+
+//Margin
+
+@mixin margin-0 {
+    margin: .5rem;
+}
+//Flex/Movement
+@mixin flex-base($flex, $justify, $align, $direction) {
+    display: $flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin flex-center-center {
+    @include flex-base(flex, center , center, row)
+}
+
+@mixin flex-end-start {
+    @include flex-base(flex, flex-end , flex-start, row)
+}
+
+@mixin flex-end-center {
+    @include flex-base(flex, flex-end , center, row)
+}
+@mixin flex-start-end-col {
+    @include flex-base(flex, flex-start , flex-end, column)
+}
+
+@mixin flex-center-start {
+    @include flex-base(flex, space-around, center, column )
+}
+
+// @mixin flex-start-end {
+//     @include flex-base(flex, flex-start, flex-start)
+// }
+
+//Position
+@mixin position-constructor($position, $top, $right, $bottom, $left) {
+
+}
+
+@mixin relative-right-top {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+}
+
+@mixin relative-right-top-2 {
+    position:absolute;
+    right: 3%;
+    top: 19%;
+}
+
+@mixin fixed-left-top {
+    position: fixed;
+    left: 10%;
+    top: 10%;
+}
+
+
+//Pictures
+$home-img: '../pics/homepic.JPG';
+
+@mixin pic-center-paralax {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+//Grid 
+
+@mixin grid-layout-1 {
+    position: absolute;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+
+}
+
+@mixin grid-position-2 {
+    grid-column: 3/ 4;
+    grid-row: 2/3;
+}
+

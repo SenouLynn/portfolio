@@ -1,0 +1,118 @@
+@import "./variables";
+
+//Use Utility for placement, sizing, and manipulation of elements
+
+@mixin pic-sizing {
+  max-width: 85vw;
+  max-height: 85vh;
+
+  @include size-100-100;
+  @include pic-center-paralax;
+}
+
+//Transition Function
+@mixin trans-bg-col {
+  transition: background-color 1s ease, color 1s ease;
+}
+
+//Nav Transition
+@mixin nav-transition($trans-name, $opacity) {
+  @include flex-end-center;
+  animation-name: $trans-name;
+  opacity: $opacity;
+  animation-duration: 3s;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+$transition-widths: (
+  home: 100%,
+  about-me: 91%,
+  tech-exp: 82%,
+  past-work: 73%,
+  resume: 64%,
+  contact: 55%,
+);
+
+@each $transition-name, $name in $transition-widths {
+  .navOpen--#{$transition-name} {
+    @include flex-end-center;
+    animation-duration: 3s;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 1;
+    width: $name;
+
+    animation-name: slidein--#{$transition-name};
+
+    @keyframes slidein--#{$transition-name} {
+      from {
+        margin-right: 100%;
+        width: 0%;
+        opacity: 0;
+      }
+
+      to {
+        margin-right: 0%;
+        width: $name;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@each $transition-name, $name in $transition-widths {
+  .navClosed--#{$transition-name} {
+    @include flex-end-center;
+    animation-duration: 3s;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0;
+    width: 0%;
+
+    animation-name: slideout--#{$transition-name};
+
+    @keyframes slideout--#{$transition-name} {
+      from {
+        margin-right: 0%;
+        width: $name;
+        opacity: 1;
+      }
+
+      to {
+        margin-right: 100%;
+        width: 0%;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+// @keyframes slidein {
+//   from {
+//     margin-right: 100%;
+//     width: 0%;
+//     opacity: 0;
+//   }
+
+//   to {
+//     margin-right: 0%;
+//     width: 100%;
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes slideout {
+//   from {
+//     margin-right: 0%;
+//     width: 100%;
+//     opacity: 1;
+//   }
+
+//   to {
+//     margin-right: 100%;
+//     width: 0%;
+//     opacity: 0;
+//   }
+// }
